@@ -68,7 +68,7 @@ $(document).ready(function() {
       //console.log(newdb.theaters[$("#selectatheater").val()] + "Theater");
       console.log(newdb.movies[movieNum]);
       console.log(newdb.theaters[$("#selectatheater").val()]);
-      var moviegoingintotheater = newdb.movies[movieNum];
+      var moviegoingintotheater = Object.assign({}, newdb.movies[movieNum]);
       AddMovieToTheater(moviegoingintotheater, newdb.theaters[$("#selectatheater").val()], newdb);
     });
     RefreshDataBase(newdb);
@@ -241,6 +241,7 @@ function RefreshTheater(theater){
   printer = "";
   count = 0;
   theater.movies.forEach(function(mov){
+
     printer = "<form class='property' id='ticket"+ mov.id + "'>";
     printer += mov.name + "<br>";
     printer += "Rated " + mov.rating + "<br>";
